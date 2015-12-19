@@ -3,57 +3,31 @@
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                        http://maven.apache.org/maven-v4_0_0.xsd">
    <!--parent / -->
+   <parent>
+      <groupId>com.github.nhojpatrick.xmlbeans</groupId>
+      <artifactId>xmlbeans-helper-parent</artifactId>
+      <version>0.1</version>
+      <relativePath>..</relativePath>
+   </parent>
    <modelVersion>4.0.0</modelVersion>
-   <groupId>com.github.nhojpatrick.xmlbeans</groupId>
+   <!--groupId / -->
    <artifactId>xmlbeans-helper-for-testng</artifactId>
    <packaging>jar</packaging>
    <name>XMLBeans Helper for TestNG</name>
-   <version>0.1</version>
+   <!--version / -->
    <description>XMLBeans Helper for testing using TestNG, extension for assertTrue and assertFalse when wanting to check if a XmlObject is validate or not and, if invalid print violations if should be valid</description>
    <url>https://github.com/nhojpatrick/xmlbeans-helper-for-testng</url>
-   <prerequisites>
-      <maven>3</maven>
-   </prerequisites>
+   <!--prerequisites /-->
    <!--issueManagement / -->
    <!--ciManagement / -->
-   <inceptionYear>2012</inceptionYear>
+   <!--inceptionYear / -->
    <!--mailingLists / -->
-   <developers>
-      <developer>
-         <id>nhojpatrick</id>
-         <name>John Patrick</name>
-         <email>nhoj.patrick@gmail.com</email>
-         <url>https://github.com/nhojpatrick</url>
-      </developer>
-   </developers>
+   <!--developers / -->
    <!--contributors / -->
    <!--licenses / -->
    <!--scm / -->
    <!--organization / -->
-   <build>
-      <pluginManagement>
-         <plugins>
-            <plugin>
-               <artifactId>maven-clean-plugin</artifactId>
-               <version>2.4.1</version>
-               <configuration>
-                  <filesets>
-                     <fileset>
-                        <directory>test-output</directory>
-                        <followSymlinks>false</followSymlinks>
-                     </fileset>
-                  </filesets>
-               </configuration>
-            </plugin>
-            <plugin>
-               <!-- requires this version as 2.8+ dropped eclipse:m2eclipse -->
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-eclipse-plugin</artifactId>
-               <version>2.7</version>
-            </plugin>
-         </plugins>
-      </pluginManagement>
-   </build>
+   <!--build / -->
    <!--profiles / -->
    <!--modules / -->
    <!--repositories / -->
@@ -69,50 +43,8 @@
       </dependency>
    </dependencies>
    <!--reports / (Deprecated. Now ignored by Maven. ) -->
-   <reporting>
-      <plugins>
-         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-site-plugin</artifactId>
-            <version>3.0</version>
-            <configuration>
-               <locales>en</locales>
-            </configuration>
-         </plugin>
-         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-project-info-reports-plugin</artifactId>
-            <version>2.4</version>
-         </plugin>
-      </plugins>
-   </reporting>
-   <dependencyManagement>
-      <dependencies>
-         <dependency>
-            <groupId>org.apache.xmlbeans</groupId>
-            <artifactId>xmlbeans</artifactId>
-            <version>2.5.0</version>
-            <scope>provided</scope>
-         </dependency>
-         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.3.1</version>
-            <scope>provided</scope>
-         </dependency>
-      </dependencies>
-   </dependencyManagement>
+   <!--reporting / -->
+   <!--dependencyManagement / -->
    <!--distributionManagement / -->
-   <properties>
-      <!-- custom properties -->
-      <project.custom.encoding>UTF-8</project.custom.encoding>
-      <project.custom.java.version>1.5</project.custom.java.version>
-      <!-- override maven properties -->
-      <maven.test.failure.ignore>false</maven.test.failure.ignore>
-      <maven.compiler.source>${project.custom.java.version}</maven.compiler.source>
-      <maven.compiler.target>${project.custom.java.version}</maven.compiler.target>
-      <project.build.sourceEncoding>${project.custom.encoding}</project.build.sourceEncoding>
-      <project.build.outputEncoding>${project.custom.encoding}</project.build.outputEncoding>
-      <project.reporting.outputEncoding>${project.custom.encoding}</project.reporting.outputEncoding>
-   </properties>
+   <!--properties / -->
 </project>
