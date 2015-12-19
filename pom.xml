@@ -8,7 +8,7 @@
    <artifactId>xmlbeans-helper-parent</artifactId>
    <packaging>pom</packaging>
    <name>XMLBeans Helper Parent</name>
-   <version>0.1</version>
+   <version>0.2-SNAPSHOT</version>
    <description>XMLBeans Helper for testing using JUnit, extension for assertTrue and assertFalse when wanting to check if a XmlObject is validate or not and, if invalid print violations if should be valid</description>
    <url>https://github.com/nhojpatrick/xmlbeans-helper-for-junit</url>
    <prerequisites>
