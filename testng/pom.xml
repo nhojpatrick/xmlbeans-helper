@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                       http://maven.apache.org/maven-v4_0_0.xsd">
+   <!--parent / -->
+   <parent>
+      <groupId>com.github.nhojpatrick.xmlbeans</groupId>
+      <artifactId>xmlbeans-helper-parent</artifactId>
+      <version>0.1</version>
+      <relativePath>..</relativePath>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <!--groupId / -->
+   <artifactId>xmlbeans-helper-for-testng</artifactId>
+   <packaging>jar</packaging>
+   <name>XMLBeans Helper for TestNG</name>
+   <!--version / -->
+   <description>XMLBeans Helper for testing using TestNG, extension for assertTrue and assertFalse when wanting to check if a XmlObject is validate or not and, if invalid print violations if should be valid</description>
+   <url>https://github.com/nhojpatrick/xmlbeans-helper-for-testng</url>
+   <!--prerequisites /-->
+   <!--issueManagement / -->
+   <!--ciManagement / -->
+   <!--inceptionYear / -->
+   <!--mailingLists / -->
+   <!--developers / -->
+   <!--contributors / -->
+   <!--licenses / -->
+   <!--scm / -->
+   <!--organization / -->
+   <!--build / -->
+   <!--profiles / -->
+   <!--modules / -->
+   <!--repositories / -->
+   <!--pluginRepositories / -->
+   <dependencies>
+      <dependency>
+         <groupId>org.apache.xmlbeans</groupId>
+         <artifactId>xmlbeans</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.testng</groupId>
+         <artifactId>testng</artifactId>
+      </dependency>
+   </dependencies>
+   <!--reports / (Deprecated. Now ignored by Maven. ) -->
+   <!--reporting / -->
+   <!--dependencyManagement / -->
+   <!--distributionManagement / -->
+   <!--properties / -->
+</project>
