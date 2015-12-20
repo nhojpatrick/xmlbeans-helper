@@ -8,9 +8,9 @@
    <artifactId>xmlbeans-helper-parent</artifactId>
    <packaging>pom</packaging>
    <name>XMLBeans Helper Parent</name>
-   <version>0.1</version>
-   <description>XMLBeans Helper for testing using JUnit, extension for assertTrue and assertFalse when wanting to check if a XmlObject is validate or not and, if invalid print violations if should be valid</description>
-   <url>https://github.com/nhojpatrick/xmlbeans-helper-for-junit</url>
+   <version>1.0.0</version>
+   <description>XMLBeans Helper for testing frameworks, used to checking if a XmlObject is validate or not and, if invalid print violations if should be valid</description>
+   <url>https://github.com/nhojpatrick/xmlbeans-helper</url>
    <prerequisites>
       <maven>3</maven>
    </prerequisites>
@@ -62,16 +62,7 @@
    </modules>
    <!--repositories / -->
    <!--pluginRepositories / -->
-   <dependencies>
-      <dependency>
-         <groupId>junit</groupId>
-         <artifactId>junit</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>org.apache.xmlbeans</groupId>
-         <artifactId>xmlbeans</artifactId>
-      </dependency>
-   </dependencies>
+   <!--dependencies / -->
    <!--reports / (Deprecated. Now ignored by Maven. ) -->
    <reporting>
       <plugins>
