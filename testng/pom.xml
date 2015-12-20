@@ -6,7 +6,7 @@
    <parent>
       <groupId>com.github.nhojpatrick.xmlbeans</groupId>
       <artifactId>xmlbeans-helper-parent</artifactId>
-      <version>0.1</version>
+      <version>1.0.0</version>
       <relativePath>..</relativePath>
    </parent>
    <modelVersion>4.0.0</modelVersion>
@@ -16,7 +16,7 @@
    <name>XMLBeans Helper for TestNG</name>
    <!--version / -->
    <description>XMLBeans Helper for testing using TestNG, extension for assertTrue and assertFalse when wanting to check if a XmlObject is validate or not and, if invalid print violations if should be valid</description>
-   <url>https://github.com/nhojpatrick/xmlbeans-helper-for-testng</url>
+   <!--url / -->
    <!--prerequisites /-->
    <!--issueManagement / -->
    <!--ciManagement / -->
