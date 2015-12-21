@@ -34,6 +34,11 @@
    <!--pluginRepositories / -->
    <dependencies>
       <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>xmlbeans-helper-testing-xmlbeans</artifactId>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
          <groupId>junit</groupId>
          <artifactId>junit</artifactId>
       </dependency>
