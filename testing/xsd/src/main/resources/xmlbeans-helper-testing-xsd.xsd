@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://github.com/nhojpatrick/xmlbeans/testing/schema/v1" elementFormDefault="qualified"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:example="http://github.com/nhojpatrick/xmlbeans/testing/schema/v1">
+
+   <xsd:element name="example-bean">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element name="example-uuid" type="example:uuid" nillable="false" />
+            <xsd:element name="example-string" type="example:str1to32" nillable="false" />
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:simpleType name="str1to32">
+      <xsd:restriction base="xsd:string">
+         <xsd:minLength value="1" />
+         <xsd:maxLength value="32" />
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="uuid">
+      <xsd:restriction base="xsd:string">
+         <xsd:length value="36" />
+         <xsd:pattern value="[a-fA-F0-9]{8}\-[a-fA-F0-9]{4}\-[a-fA-F0-9]{4}\-[a-fA-F0-9]{4}\-[a-fA-F0-9]{12}" />
+      </xsd:restriction>
+   </xsd:simpleType>
+
+</xsd:schema>
