@@ -640,7 +640,7 @@
 	<properties>
 		<!-- custom properties -->
 		<project.custom.encoding>UTF-8</project.custom.encoding>
-		<project.custom.java.version>1.5</project.custom.java.version>
+		<project.custom.java.version>1.8</project.custom.java.version>
 		<!-- override maven properties -->
 		<maven.test.failure.ignore>false</maven.test.failure.ignore>
 		<maven.compiler.source>${project.custom.java.version}</maven.compiler.source>
