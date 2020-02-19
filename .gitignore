@@ -1,3 +1,15 @@
+# ignore file
+
+#eclipse
+.classpath
+.project
+.settings/
+test-output/
+
+# intellij
+*.iml
+.idea/
+
 # maven
 target/
 pom.xml.tag
@@ -8,14 +20,10 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 
-# mac
+# MacOS
+._*
 .DS_Store
 
-# windows
+# Windows
+[Dd]esktop.ini
 Thumbs.db
-
-# eclipse
-.classpath
-.project
-.settings/
-test-output/
