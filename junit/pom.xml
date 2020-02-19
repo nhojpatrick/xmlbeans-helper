@@ -1,55 +1,59 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                       http://maven.apache.org/maven-v4_0_0.xsd">
-   <!--parent / -->
-   <parent>
-      <groupId>com.github.nhojpatrick.xmlbeans</groupId>
-      <artifactId>xmlbeans-helper</artifactId>
-      <version>3.0.0-SNAPSHOT</version>
-      <relativePath>..</relativePath>
-   </parent>
-   <modelVersion>4.0.0</modelVersion>
-   <!--groupId / -->
-   <artifactId>xmlbeans-helper-for-junit</artifactId>
-   <packaging>jar</packaging>
-   <name>XMLBeans Helper for JUnit</name>
-   <!--version / -->
-   <description>XMLBeans Helper for testing using JUnit, extension for assertTrue and assertFalse when wanting to check if a XmlObject is validate or not and, if invalid print violations if should be valid</description>
-   <!--url / -->
-   <!--prerequisites /-->
-   <!--issueManagement / -->
-   <!--ciManagement / -->
-   <!--inceptionYear / -->
-   <!--mailingLists / -->
-   <!--developers / -->
-   <!--contributors / -->
-   <!--licenses / -->
-   <!--scm / -->
-   <!--organization / -->
-   <!--build / -->
-   <!--profiles / -->
-   <!--modules / -->
-   <!--repositories / -->
-   <!--pluginRepositories / -->
-   <dependencies>
-      <dependency>
-         <groupId>${project.groupId}</groupId>
-         <artifactId>xmlbeans-helper-testing-xmlbeans</artifactId>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <groupId>junit</groupId>
-         <artifactId>junit</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>org.apache.xmlbeans</groupId>
-         <artifactId>xmlbeans</artifactId>
-      </dependency>
-   </dependencies>
-   <!--reports / (Deprecated. Now ignored by Maven. ) -->
-   <!--reporting / -->
-   <!--dependencyManagement / -->
-   <!--distributionManagement / -->
-   <!--properties / -->
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!--modelVersion / -->
+	<modelVersion>4.0.0</modelVersion>
+	<!--parent / -->
+	<parent>
+		<groupId>com.github.nhojpatrick.xmlbeans</groupId>
+		<artifactId>xmlbeans-helper</artifactId>
+		<version>3.0.0-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+	<!--groupId / -->
+	<!--artifactId / -->
+	<artifactId>xmlbeans-helper-for-junit</artifactId>
+	<!--packaging / -->
+	<packaging>jar</packaging>
+	<!--name / -->
+	<name>XMLBeans Helper for JUnit</name>
+	<!--version / -->
+	<!--description / -->
+	<description>XMLBeans Helper for testing using JUnit, extension for assertTrue and assertFalse when wanting to check if a XmlObject is validate or not and, if invalid print violations if should be valid</description>
+	<!--url / -->
+	<!--prerequisites / -->
+	<!--issueManagement / -->
+	<!--ciManagement / -->
+	<!--inceptionYear / -->
+	<!--mailingLists / -->
+	<!--developers / -->
+	<!--contributors / -->
+	<!--licenses / -->
+	<!--scm / -->
+	<!--organization / -->
+	<!--build / -->
+	<!--profiles / -->
+	<!--modules / -->
+	<!--repositories / -->
+	<!--pluginRepositories / -->
+	<!--dependencies / -->
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>xmlbeans-helper-testing-xmlbeans</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+		</dependency>
+	</dependencies>
+	<!--reports (Deprecated) / -->
+	<!--reporting / -->
+	<!--dependencyManagement / -->
+	<!--distributionManagement / -->
+	<!--properties / -->
 </project>

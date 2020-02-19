@@ -1,43 +1,47 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                       http://maven.apache.org/maven-v4_0_0.xsd">
-   <!--parent / -->
-   <parent>
-      <groupId>com.github.nhojpatrick.xmlbeans</groupId>
-      <artifactId>xmlbeans-helper</artifactId>
-      <version>3.0.0-SNAPSHOT</version>
-      <relativePath>..</relativePath>
-   </parent>
-   <modelVersion>4.0.0</modelVersion>
-   <!--groupId / -->
-   <artifactId>xmlbeans-helper-testing-parent</artifactId>
-   <packaging>pom</packaging>
-   <name>XMLBeans Helper Testing Parent</name>
-   <!--version/ -->
-   <!--description/ -->
-   <!--url/ -->
-   <!--issueManagement / -->
-   <!--ciManagement / -->
-   <!--inceptionYear/ -->
-   <!--mailingLists / -->
-   <!--developers/ -->
-   <!--contributors / -->
-   <!--licenses / -->
-   <!--scm / -->
-   <!--organization / -->
-   <!--build/ -->
-   <!--profiles/ -->
-   <modules>
-      <module>xmlbeans</module>
-      <module>xsd</module>
-   </modules>
-   <!--repositories / -->
-   <!--pluginRepositories / -->
-   <!--dependencies / -->
-   <!--reports / (Deprecated. Now ignored by Maven. ) -->
-   <!--reporting/ -->
-   <!--dependencyManagement/ -->
-   <!--distributionManagement / -->
-   <properties />
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!--modelVersion / -->
+	<modelVersion>4.0.0</modelVersion>
+	<!--parent / -->
+	<parent>
+		<groupId>com.github.nhojpatrick.xmlbeans</groupId>
+		<artifactId>xmlbeans-helper</artifactId>
+		<version>3.0.0-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+	<!--groupId / -->
+	<!--artifactId / -->
+	<artifactId>xmlbeans-helper-testing-parent</artifactId>
+	<!--packaging / -->
+	<packaging>pom</packaging>
+	<!--name / -->
+	<name>XMLBeans Helper Testing Parent</name>
+	<!--version / -->
+	<!--description / -->
+	<!--url / -->
+	<!--prerequisites / -->
+	<!--issueManagement / -->
+	<!--ciManagement / -->
+	<!--inceptionYear / -->
+	<!--mailingLists / -->
+	<!--developers / -->
+	<!--contributors / -->
+	<!--licenses / -->
+	<!--scm / -->
+	<!--organization / -->
+	<!--build / -->
+	<!--profiles / -->
+	<!--modules / -->
+	<modules>
+		<module>xmlbeans</module>
+		<module>xsd</module>
+	</modules>
+	<!--repositories / -->
+	<!--pluginRepositories / -->
+	<!--dependencies / -->
+	<!--reports (Deprecated) / -->
+	<!--reporting / -->
+	<!--dependencyManagement / -->
+	<!--distributionManagement / -->
+	<!--properties / -->
 </project>

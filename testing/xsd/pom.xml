@@ -1,87 +1,90 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                       http://maven.apache.org/maven-v4_0_0.xsd">
-   <!--parent / -->
-   <parent>
-      <groupId>com.github.nhojpatrick.xmlbeans</groupId>
-      <artifactId>xmlbeans-helper-testing-parent</artifactId>
-      <version>3.0.0-SNAPSHOT</version>
-      <relativePath>..</relativePath>
-   </parent>
-   <modelVersion>4.0.0</modelVersion>
-   <!--groupId / -->
-   <artifactId>xmlbeans-helper-testing-xsd</artifactId>
-   <packaging>jar</packaging>
-   <name>XMLBeans Helper Testing Xsd</name>
-   <!--version / -->
-   <!--description / -->
-   <!--url / -->
-   <!--prerequisites / -->
-   <!--issueManagement / -->
-   <!--ciManagement / -->
-   <!--inceptionYear / -->
-   <!--mailingLists / -->
-   <!--developers / -->
-   <!--contributors / -->
-   <!--licenses / -->
-   <!--scm / -->
-   <!--organization / -->
-   <build>
-      <plugins>
-         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-remote-resources-plugin</artifactId>
-            <version>1.5</version>
-            <executions>
-               <execution>
-                  <goals>
-                     <goal>bundle</goal>
-                  </goals>
-                  <configuration>
-                     <includes>
-                        <include>${schema.filename}</include>
-                     </includes>
-                  </configuration>
-               </execution>
-            </executions>
-         </plugin>
-         <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>build-helper-maven-plugin</artifactId>
-            <version>1.10</version>
-            <executions>
-               <execution>
-                  <phase>package</phase>
-                  <id>attach-artifacts</id>
-                  <goals>
-                     <goal>attach-artifact</goal>
-                  </goals>
-               </execution>
-            </executions>
-            <configuration>
-               <artifacts>
-                  <artifact>
-                     <file>${schema}</file>
-                     <type>xsd</type>
-                  </artifact>
-               </artifacts>
-            </configuration>
-         </plugin>
-      </plugins>
-   </build>
-   <!--profiles / -->
-   <!--modules / -->
-   <!--repositories / -->
-   <!--pluginRepositories / -->
-   <!--dependencies / -->
-   <!--reports / -->
-   <!--reporting / -->
-   <!--dependencyManagement / -->
-   <!--distributionManagement / -->
-   <!--properties / -->
-   <properties>
-      <schema.filename>${project.artifactId}.xsd</schema.filename>
-      <schema>src/main/resources/${schema.filename}</schema>
-   </properties>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!--modelVersion / -->
+	<modelVersion>4.0.0</modelVersion>
+	<!--parent / -->
+	<parent>
+		<groupId>com.github.nhojpatrick.xmlbeans</groupId>
+		<artifactId>xmlbeans-helper-testing-parent</artifactId>
+		<version>3.0.0-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+	<!--groupId / -->
+	<!--artifactId / -->
+	<artifactId>xmlbeans-helper-testing-xsd</artifactId>
+	<!--packaging / -->
+	<packaging>jar</packaging>
+	<!--name / -->
+	<name>XMLBeans Helper Testing Xsd</name>
+	<!--version / -->
+	<!--description / -->
+	<!--url / -->
+	<!--prerequisites / -->
+	<!--issueManagement / -->
+	<!--ciManagement / -->
+	<!--inceptionYear / -->
+	<!--mailingLists / -->
+	<!--developers / -->
+	<!--contributors / -->
+	<!--licenses / -->
+	<!--scm / -->
+	<!--organization / -->
+	<!--build / -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-remote-resources-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>bundle</goal>
+						</goals>
+						<configuration>
+							<includes>
+								<include>${schema.filename}</include>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.10</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<id>attach-artifacts</id>
+						<goals>
+							<goal>attach-artifact</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<artifacts>
+						<artifact>
+							<file>${schema}</file>
+							<type>xsd</type>
+						</artifact>
+					</artifacts>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<!--profiles / -->
+	<!--modules / -->
+	<!--repositories / -->
+	<!--pluginRepositories / -->
+	<!--dependencies / -->
+	<!--reports (Deprecated) / -->
+	<!--reporting / -->
+	<!--dependencyManagement / -->
+	<!--distributionManagement / -->
+	<!--properties / -->
+	<properties>
+		<schema.filename>${project.artifactId}.xsd</schema.filename>
+		<schema>src/main/resources/${schema.filename}</schema>
+	</properties>
 </project>
