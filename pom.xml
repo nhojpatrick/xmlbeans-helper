@@ -66,13 +66,65 @@
 					</dependencies>
 				</plugin>
 				<plugin>
+					<groupId>com.github.spotbugs</groupId>
+					<artifactId>spotbugs-maven-plugin</artifactId>
+					<version>3.1.12.2</version>
+					<!--					<configuration>-->
+					<!--						<plugins>-->
+					<!--							<plugin>-->
+					<!--								<groupId>com.h3xstream.findsecbugs</groupId>-->
+					<!--								<artifactId>findsecbugs-plugin</artifactId>-->
+					<!--								<version>1.9.0</version>-->
+					<!--							</plugin>-->
+					<!--							<plugin>-->
+					<!--								<groupId>com.mebigfatguy.fb-contrib</groupId>-->
+					<!--								<artifactId>fb-contrib</artifactId>-->
+					<!--								<version>7.4.6</version>-->
+					<!--							</plugin>-->
+					<!--							<plugin>-->
+					<!--								<groupId>jp.skypencil.findbugs.slf4j</groupId>-->
+					<!--								<artifactId>bug-pattern</artifactId>-->
+					<!--								<version>1.5.0</version>-->
+					<!--							</plugin>-->
+					<!--						</plugins>-->
+					<!--					</configuration>-->
+					<dependencies>
+						<dependency>
+							<groupId>com.github.spotbugs</groupId>
+							<artifactId>spotbugs</artifactId>
+							<version>${version.com.github.spotbugs}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-checkstyle-plugin</artifactId>
-					<version>2.17</version>
+					<version>3.1.0</version>
 					<configuration>
-						<failsOnError>false</failsOnError>
-						<failOnViolation>false</failOnViolation>
+						<consoleOutput>true</consoleOutput>
+						<failsOnError>true</failsOnError>
+						<checkstyleRules>
+							<module name="Checker">
+								<!-- Checks for Size Violations.                             -->
+								<!-- See https://checkstyle.sourceforge.io/config_sizes.html -->
+								<module name="LineLength">
+									<property name="fileExtensions" value="java"></property>
+									<property name="max" value="120"></property>
+									<property name="ignorePattern" value="^package.*|^import.*|.*LOGGER.*"></property>
+								</module>
+								<!-- Checks for whitespace                               -->
+								<!-- See http://checkstyle.sf.net/config_whitespace.html -->
+								<module name="FileTabCharacter"></module>
+							</module>
+						</checkstyleRules>
 					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>com.puppycrawl.tools</groupId>
+							<artifactId>checkstyle</artifactId>
+							<version>${version.com.puppycrawl.tools.checkstyle}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -116,8 +168,9 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>2.10.3</version>
+					<version>3.1.1</version>
 					<configuration>
+						<source>1.8</source>
 						<tags>
 							<tag>
 								<name>todo</name>
@@ -146,7 +199,19 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-pmd-plugin</artifactId>
-					<version>3.6</version>
+					<version>3.13.0</version>
+					<configuration>
+						<rulesets>
+							<ruleset>com/github/nhojpatrick/pmd/ruleset/rules.xml</ruleset>
+						</rulesets>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>com.github.nhojpatrick.pmd</groupId>
+							<artifactId>nhojpatrick-pmd-ruleset</artifactId>
+							<version>[1.0,1.999)</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -184,25 +249,32 @@
 					<version>2.3.3</version>
 				</plugin>
 				<plugin>
+					<groupId>org.eluder.coveralls</groupId>
+					<artifactId>coveralls-maven-plugin</artifactId>
+					<version>4.3.0</version>
+					<configuration>
+						<repoToken>${COVERALLS_REPO_TOKEN}</repoToken>
+					</configuration>
+				</plugin>
+				<plugin>
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
-					<version>0.7.5.201505241946</version>
+					<version>0.8.5</version>
+					<configuration>
+						<excludes>
+							<exclude>META-INF/versions/**</exclude>
+						</excludes>
+					</configuration>
 					<executions>
 						<execution>
-							<id>default-prepare-agent</id>
+							<id>jacoco-prepare-agent</id>
 							<goals>
 								<goal>prepare-agent</goal>
 							</goals>
 						</execution>
 						<execution>
-							<id>default-report</id>
-							<phase>site</phase>
-							<goals>
-								<goal>report</goal>
-							</goals>
-						</execution>
-						<execution>
-							<id>default-check</id>
+							<id>jacoco-check</id>
+							<phase>validate</phase>
 							<goals>
 								<goal>check</goal>
 							</goals>
@@ -210,17 +282,51 @@
 								<rules>
 									<rule>
 										<element>BUNDLE</element>
+										<excludes>
+											<exclude>*Test</exclude>
+											<exclude>*IT</exclude>
+										</excludes>
 										<limits>
 											<limit>
-												<counter>COMPLEXITY</counter>
+												<counter>LINE</counter>
 												<value>COVEREDRATIO</value>
-												<minimum>0.60</minimum>
+												<minimum>${jacoco.bundle.line.coveredratio}</minimum>
+											</limit>
+											<limit>
+												<counter>CLASS</counter>
+												<value>MISSEDCOUNT</value>
+												<maximum>${jacoco.bundle.class.missedcount}</maximum>
 											</limit>
 										</limits>
 									</rule>
+									<!--										<rule>-->
+									<!--											<element>CLASS</element>-->
+									<!--											<excludes>-->
+									<!--												<exclude>*Test</exclude>-->
+									<!--												<exclude>*IT</exclude>-->
+									<!--											</excludes>-->
+									<!--											<limits>-->
+									<!--												<limit>-->
+									<!--													<counter>LINE</counter>-->
+									<!--													<value>COVEREDRATIO</value>-->
+									<!--													<minimum>${jacoco.class.line.coveredratio}</minimum>-->
+									<!--												</limit>-->
+									<!--												<limit>-->
+									<!--													<counter>CLASS</counter>-->
+									<!--													<value>MISSEDCOUNT</value>-->
+									<!--													<maximum>${jacoco.class.class.missedcount}</maximum>-->
+									<!--												</limit>-->
+									<!--											</limits>-->
+									<!--										</rule>-->
 								</rules>
-								<haltOnFailure>false</haltOnFailure>
 							</configuration>
+						</execution>
+						<execution>
+							<id>jacoco-report</id>
+							<phase>site</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
 						</execution>
 					</executions>
 				</plugin>
@@ -235,6 +341,32 @@
 				<sort.skip>true</sort.skip>
 			</properties>
 		</profile>
+		<profile>
+			<id>qa_checkstyle</id>
+			<build>
+				<defaultGoal>validate</defaultGoal>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-checkstyle-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>checkstyle-check</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>check</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+				<sort.skip>true</sort.skip>
+			</properties>
+		</profile>
+		<profile>
+			<id>qa_jacoco</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -243,6 +375,80 @@
 					</plugin>
 				</plugins>
 			</build>
+			<properties>
+				<sort.skip>true</sort.skip>
+			</properties>
+		</profile>
+		<profile>
+			<id>qa_javadoc</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>javadoc-check</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>javadoc</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+				<sort.skip>true</sort.skip>
+			</properties>
+		</profile>
+		<profile>
+			<id>qa_pmd</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-pmd-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>pmd-check</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>check</goal>
+									<goal>cpd-check</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+				<pmd.verbose>true</pmd.verbose>
+				<sort.skip>true</sort.skip>
+			</properties>
+		</profile>
+		<profile>
+			<id>qa_spotbugs</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.github.spotbugs</groupId>
+						<artifactId>spotbugs-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>spotbugs-check</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>check</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+				<sort.skip>true</sort.skip>
+			</properties>
 		</profile>
 		<profile>
 			<id>sortpom</id>
@@ -267,6 +473,58 @@
 					</plugin>
 				</plugins>
 			</build>
+		</profile>
+		<profile>
+			<id>versions</id>
+			<build>
+				<defaultGoal>validate</defaultGoal>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>versions-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>versions-check</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>display-dependency-updates</goal>
+									<goal>display-parent-updates</goal>
+									<goal>display-plugin-updates</goal>
+									<goal>display-property-updates</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+				<sort.skip>true</sort.skip>
+			</properties>
+		</profile>
+		<profile>
+			<id>wrapper</id>
+			<build>
+				<defaultGoal>validate</defaultGoal>
+				<plugins>
+					<plugin>
+						<groupId>io.takari</groupId>
+						<artifactId>maven</artifactId>
+						<version>0.7.7</version>
+						<executions>
+							<execution>
+								<id>wrapper-latest</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>wrapper</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+				<sort.skip>true</sort.skip>
+			</properties>
 		</profile>
 	</profiles>
 	<!--modules / -->
@@ -390,6 +648,15 @@
 		<project.build.sourceEncoding>${project.custom.encoding}</project.build.sourceEncoding>
 		<project.build.outputEncoding>${project.custom.encoding}</project.build.outputEncoding>
 		<project.reporting.outputEncoding>${project.custom.encoding}</project.reporting.outputEncoding>
+		<!-- maven user properties -->
+		<downloadSources>true</downloadSources>
+		<downloadJavadocs>true</downloadJavadocs>
+		<!-- qa user properties -->
+		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
+		<jacoco.bundle.class.missedcount>0</jacoco.bundle.class.missedcount>
+		<jacoco.bundle.line.coveredratio>100%</jacoco.bundle.line.coveredratio>
+		<pmd.maxAllowedViolations>0</pmd.maxAllowedViolations>
+		<spotbugs.maxAllowedViolations>0</spotbugs.maxAllowedViolations>
 		<!-- sortpom -->
 		<sort.createBackupFile>false</sort.createBackupFile>
 		<sort.nrOfIndentSpace>-1</sort.nrOfIndentSpace>
@@ -399,5 +666,7 @@
 		<sort.sortOrderFile>com/github/nhojpatrick/sortpom/sortorderfile/nhojpatrick.xml</sort.sortOrderFile>
 		<sort.sortPlugins>groupId,artifactId,version,scope</sort.sortPlugins>
 		<sort.sortProperties>false</sort.sortProperties>
+		<!-- versions-maven-plugin -->
+		<generateBackupPoms>false</generateBackupPoms>
 	</properties>
 </project>
